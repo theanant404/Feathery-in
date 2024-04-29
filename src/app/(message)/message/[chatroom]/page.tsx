@@ -13,8 +13,8 @@ interface UserData {
   id: string;
   content: string;
   participantsId: string;
-  fullname:string;
-  image:any;
+  fullname: string;
+  image: any;
 
 }
 export default function ChatRoom({ params }: any) {
@@ -23,8 +23,8 @@ export default function ChatRoom({ params }: any) {
     content: "",
   });
 
-  
-  const [participates,setParticipates]=useState<UserData[]>([])
+
+  const [participates, setParticipates] = useState<UserData[]>([])
   const router = useRouter();
   const session = useSession();
   if (session.status === "unauthenticated") {
@@ -43,8 +43,8 @@ export default function ChatRoom({ params }: any) {
         .then((response) => {
           // console.log("response get all message ", response);
           // console.log("Response:", response.data.participate);
-          const participatedetail=response.data.participate.map(
-            (participatedetail:{imag:any;fullname:string;username:string})=>({
+          const participatedetail = response.data.participate.map(
+            (participatedetail: { imag: any; fullname: string; username: string }) => ({
 
             })
           )
@@ -64,24 +64,24 @@ export default function ChatRoom({ params }: any) {
   // send message
 
 
-// socket io 
-let socket: any;
+  // socket io 
+  let socket: any;
 
-socket = io("http://localhost:3001");
-useEffect(() => {
-  
-  socket.emit("join_room",params.chatroom);
-  // setTimeout(() => {}, 1000);
-  
-}, []);
+  socket = io("http://localhost:3001");
+  useEffect(() => {
+
+    socket.emit("join_room", params.chatroom);
+    // setTimeout(() => {}, 1000);
+
+  }, []);
 
 
   return (
     <>
       <div className=" grid min-h-screen ">
-        <div className=" w-full border-r bg-muted/40 ">
-          <div className="flex  h-full w-full max-h-screen flex-col gap-2">
-            <div className="h-14 mt-0 bg-stone-300 items-center">
+        <div className=" w-full border-r">
+          <div className="flex  h-full w-full max-h-screen flex-col">
+            <div className="min-h-14 p-4 mt-0 bg-stone-300 items-center">
               <div className="flex items-center gap-3 mx-7">
                 <Avatar className="size-20">
                   <AvatarImage

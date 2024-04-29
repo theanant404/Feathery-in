@@ -25,7 +25,7 @@ export default function Layout({
         {/* <NavBar/> */}
         <div className="flex">
         <SidBar/>
-        <div className="bg-blue-800 w-full">
+        <div className="bg-black w-full">
           <NavBar/>
         {children}
         {/* <SendMessage/> */}
