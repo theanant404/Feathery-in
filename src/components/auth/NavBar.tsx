@@ -21,7 +21,60 @@ export default function NavBar() {
   
   return (
     <>
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+    
+
+<nav className="bg-[#c8ccd2] shadow-xl dark:bg-[#181818] z-50 fixed w-full">
+  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a  className="cursor-pointer flex items-center space-x-3 rtl:space-x-reverse">
+      <i className="fa-solid fa-feather-pointed dark:text-white text-lg"></i>
+        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Feathery</span>
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  dark:text-gray-400 " aria-controls="navbar-default" aria-expanded="false">
+        <span className="sr-only">Open main menu</span>
+        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg max-md:bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 max-md:dark:bg-[#000]">
+        <li>
+          <a className="cursor-pointer block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white " aria-current="page"  data-collapse-toggle="navbar-default">Home</a>
+        </li>
+        <li>
+          <a  className="cursor-pointer block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white " aria-current="page"  data-collapse-toggle="navbar-default">Editor</a>
+        </li>
+        <li>
+          <a  className="cursor-pointer block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white"  data-collapse-toggle="navbar-default">Profile</a>
+        </li>
+        <li>
+          <a className="cursor-pointer block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white"  data-collapse-toggle="navbar-default">Monetize</a>
+        </li>
+        <li >
+          <div >
+          <Link href={'/message'} className="flex cursor-pointer gap-2 py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white" >
+
+          Message 
+            <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+              <path d="M18 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3.546l3.2 3.659a1 1 0 0 0 1.506 0L13.454 14H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-8 10H5a1 1 0 0 1 0-2h5a1 1 0 1 1 0 2Zm5-4H5a1 1 0 0 1 0-2h10a1 1 0 1 1 0 2Z"/>
+          </svg>
+          </Link>
+          </div>
+        </li>
+        <li>
+          <a className="cursor-pointer block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white">
+            Dark mode
+          </a>  
+        </li>
+        <li >
+          <a className="cursor-pointer block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white"  data-collapse-toggle="navbar-default">Logout</a>
+        </li>
+        
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+      {/* <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="/"
@@ -192,7 +245,7 @@ export default function NavBar() {
           </DropdownMenu>
           <LightbulbIcon className="h-6 w-6"/>
         </div>
-      </header>
+      </header> */}
     </>
   );
 }

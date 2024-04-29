@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "../globals.css";
 import AuthProvider from '@/context/authProvider'
 
 import  NavBar from "@/components/edit-profile/Profile_Edit_Nav";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +18,7 @@ export default function Layout({
     <html lang="en">
       <AuthProvider>
         
-      <body className={inter.className}>
+      <body>
         {/* <NavBar/> */}
      
         <NavBar/>
