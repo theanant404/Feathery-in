@@ -10,29 +10,26 @@ export default function About() {
     >
       <div className="bg-muted/50 border rounded-lg py-12">
         <div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
-          <Image
+          {/* <Image
             src={pilot}
             alt=""
             className="w-[300px] object-contain rounded-lg"
-          ></Image>
-          <div className="bg-green-0 flex flex-col justify-between">
+          ></Image> */}
+          <div className="bg-green-0 flex flex-col text-center ">
             <div className="pb-6">
-              <h2 className="text-3xl md:text-4xl font-bold">
-                <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+              <h2 className="text-3xl md:text-4xl  font-bold inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7]  text-transparent bg-clip-text">
+                <span className="">
                   About{" "}
                 </span>
-                Company
+                Us
               </h2>
               <p className="text-xl text-muted-foreground mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit.
+                
+              Welcome to Feathery, where we believe in learning together out in the open. We think that when you share what you're learning, it helps you grow and inspires others too. Our platform makes it easy for you to show your progress, connect with others, and learn new things together. Come join us as we make learning fun and accessible for everyone.
               </p>
             </div>
 
-            <Statistics />
+            {/* <Statistics /> */}
           </div>
         </div>
       </div>

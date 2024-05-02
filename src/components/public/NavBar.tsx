@@ -50,9 +50,10 @@ export default function NavBar() {
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
-            <Link href="/" className="ml-2 font-bold text-xl flex">
               <LogOutIcon />
-              Feathery
+            <Link href="/" className="cursor-pointer flex items-center space-x-3 rtl:space-x-reverse">
+                <i className="fa-solid fa-feather-pointed dark:text-white text-lg"></i>
+                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Feathery</span>
             </Link>
           </NavigationMenuItem>
 
@@ -124,8 +125,19 @@ export default function NavBar() {
               target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              {/* <GitHubLogoIcon className="mr-2 w-5 h-5" /> */}
+              Login
+            </Link>
+            <Link
+              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+              target="_blank"
+              className={`border ${buttonVariants({ variant: "secondary" })}`}
+            >
+              {/* <GitHubLogoIcon className="mr-2 w-5 h-5" /> */}
+              <p className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text font-extrabold">
+
+              Get Started
+              </p>
             </Link>
 
             <ModeToggle />
