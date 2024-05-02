@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import AuthProvider from '@/context/authProvider'
-import NavBar from "@/components/auth/NavBar";
+import NavBar from "@/components/public/NavBar";
+import { ThemeProvider } from "@/context/themProvider";
 
 export const metadata: Metadata = {
   title: "Feathery",
@@ -16,11 +17,12 @@ export default function Layout({
   return (
     <html lang="en" className="dark">
       <AuthProvider>
-        
+        <ThemeProvider>
       <body>
         <NavBar/>
         {children}
         </body>
+        </ThemeProvider>
       </AuthProvider>
     </html>
   );

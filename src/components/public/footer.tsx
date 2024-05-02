@@ -14,7 +14,7 @@ export default function Footer(){
             className="font-bold text-xl flex"
           >
             <Leaf />
-            ShadcnUI/React
+            Feathery
          </Link>
         </div>
 

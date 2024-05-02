@@ -5,7 +5,7 @@ import Follower from "@/components/profile/follower";
 import Post from "@/components/profile/post";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card} from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
@@ -22,10 +22,10 @@ export default function PublicProfile({ params }: any) {
     <>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
-          <Card x-chunk="dashboard-01-chunk-0">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            </CardHeader>
-            <CardContent>
+          <div  x-chunk="dashboard-01-chunk-0">
+            <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+            </div>
+            <div>
               <Avatar className="size-28">
                 <AvatarImage
                   src="https://github.com/shadcn.png"
@@ -34,46 +34,46 @@ export default function PublicProfile({ params }: any) {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <span>Name the anant</span>
-            </CardContent>
-          </Card>
-          <Card x-chunk="dashboard-01-chunk-1">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
+            </div>
+          </div>
+          <div  x-chunk="dashboard-01-chunk-1">
+            <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <div className="text-sm font-medium">
                 Subscriptions
-              </CardTitle>
+              </div>
               <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
+            </div>
+            <div>
               <div className="text-2xl font-bold">+2350</div>
               <p className="text-xs text-muted-foreground">
                 +180.1% from last month
               </p>
-            </CardContent>
-          </Card>
-          <Card x-chunk="dashboard-01-chunk-2">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Sales</CardTitle>
+            </div>
+          </div >
+          <div  x-chunk="dashboard-01-chunk-2">
+            <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <div className="text-sm font-medium">Sales</div>
               <CreditCard className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
+            </div>
+            <div>
               <div className="text-2xl font-bold">+12,234</div>
               <p className="text-xs text-muted-foreground">
                 +19% from last month
               </p>
-            </CardContent>
-          </Card>
-          <Card x-chunk="dashboard-01-chunk-3">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Now</CardTitle>
+            </div>
+          </div >
+          <div  x-chunk="dashboard-01-chunk-3">
+            <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <div className="text-sm font-medium">Active Now</div>
               <Activity className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
+            </div>
+            <div>
               <div className="text-2xl font-bold">+573</div>
               <p className="text-xs text-muted-foreground">
                 +201 since last hour
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div >
         </div>
       </main>
 
