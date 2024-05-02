@@ -13,33 +13,33 @@ import {
   
   const FAQList: FAQProps[] = [
     {
-      question: "Is this template free?",
-      answer: "Yes. It is a free ChadcnUI template.",
+      question: "What is Feathery?",
+      answer: "Feathery is a place where you can share what you're learning, connect with others, and explore new stuff.",
       value: "item-1",
     },
     {
-      question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
+      question: "How do I start on Feathery?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+        "Just sign up, create your profile, start documenting and sharing your projects and progress, and connect with others!",
       value: "item-2",
     },
     {
       question:
-        "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
+        "Is Feathery free?",
       answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
+        "Yes, it's totally free to use. Just sign up and you're good to go!",
       value: "item-3",
     },
     {
-      question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-      answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+      question: "What can I share on Feathery?",
+      answer: "You can share anything related to what you're learning or doing. Like updates, thoughts, or cool resources you find.",
       value: "item-4",
     },
     {
       question:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
+        "How do I connect with others on Feathery?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+        "You can join discussions, make study groups, or message people directly. It's all about learning and connecting together!",
       value: "item-5",
     },
   ];
@@ -76,7 +76,7 @@ export default function FAQ(){
           ))}
         </Accordion>
   
-        <h3 className="font-medium mt-4">
+        {/* <h3 className="font-medium mt-4">
           Still have questions?{" "}
           <a
             href="#"
@@ -84,7 +84,7 @@ export default function FAQ(){
           >
             Contact us
           </a>
-        </h3>
+        </h3> */}
       </section>
     );
   };

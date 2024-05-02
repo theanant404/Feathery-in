@@ -141,13 +141,12 @@ export default function Footer(){
 
       <section className="container pb-14 text-center">
         <h3>
-          &copy; 2024 Landing page made by{" "}
+          &copy;2024 Feathery.in, all rights reserved.
           <Link
             target="_blank"
             href="https://github.com/the-anant"
             className="text-primary transition-all border-primary hover:border-b-2"
           >
-            the anant
          </Link>
         </h3>
       </section>

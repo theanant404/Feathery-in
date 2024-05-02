@@ -7,12 +7,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
+import aryanThakor from "./img/landing-page-people/aryan-thakor.jpg";
+import anant from "./img/landing-page-people/anant.jpg";
+import jenish from "./img/landing-page-people/jenish-patel.jpeg";
+import harsh from "./img/landing-page-people/harsh-shukla.png";
+import vipra from "./img/landing-page-people/vipra-dave.jpg";
+import rutvi from "./img/landing-page-people/rutvi-shah.jpg";
 
 interface TeamProps {
-  imageUrl: string;
+  imageUrl: any;
   name: string;
   position: string;
+  content:string;
   socialNetworks: SociaNetworkslProps[];
 }
 
@@ -23,59 +31,104 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://i.pravatar.cc/150?img=35",
-    name: "Emma Smith",
-    position: "Product Manager",
+    imageUrl: aryanThakor,
+    name: "Aryan Thakor",
+    position: "Founder",
+    content:"Building Feathery.in",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
+        name: "Github",
+        url: "https://www.github.com/aryan1982",
       },
       {
-        name: "Instagram",
+        name: "Feathery",
         url: "https://www.instagram.com/",
       },
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=60",
-    name: "John Doe",
-    position: "Tech Lead",
-    socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=36",
-    name: "Ashley Ross",
-    position: "Frontend Developer",
-    socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
-
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=17",
-    name: "Bruce Rogers",
+    imageUrl: anant,
+    name: "Anant",
     position: "Backend Developer",
+    content:"Building Feathery.in",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
+        name: "Github",
+        url: "https://www.github.com/aryan1982",
+      },
+      {
+        name: "Feathery",
+        url: "https://www.instagram.com/",
+      },
+    ],
+  },
+  {
+    imageUrl: harsh,
+    name: "Harsh Shukla",
+    position: "",
+    content:"Building Feathery.in",
+    socialNetworks: [
+      { name: "Linkedin", url: "http://linkedin.com" },
+      {
+        name: "Github",
+        url: "https://www.github.com/aryan1982",
+      },
+      {
+        name: "Feathery",
+        url: "https://www.instagram.com/",
+      },
+    ],
+  },
+  {
+    imageUrl: jenish,
+    name: "Jenish Patel",
+    position: "Graphics Designer",
+    content:"Building Feathery.in",
+    socialNetworks: [
+      { name: "Linkedin", url: "http://linkedin.com" },
+      {
+        name: "Github",
+        url: "https://www.github.com/aryan1982",
+      },
+      {
+        name: "Feathery",
+        url: "https://www.instagram.com/",
+      },
+    ],
+  },
+  {
+    imageUrl: vipra,
+    name: "Vipra Dave",
+    position: "Social Media Lead and Designer",
+    content:"Building Feathery.in",
+    socialNetworks: [
+      { name: "Linkedin", url: "http://linkedin.com" },
+      {
+        name: "Github",
+        url: "https://www.github.com/aryan1982",
+      },
+      {
+        name: "Feathery",
+        url: "https://www.instagram.com/",
+      },
+    ],
+  },
+  {
+    imageUrl: rutvi,
+    name: "Rutvi Shah",
+    position: "Content Writer and Designer",
+    content:"Building Feathery.in",
+    socialNetworks: [
+      { name: "Linkedin", url: "http://linkedin.com" },
+      {
+        name: "Github",
+        url: "https://www.github.com/aryan1982",
+      },
+      {
+        name: "Feathery",
+        url: "https://www.instagram.com/",
       },
     ],
   },
@@ -92,6 +145,9 @@ export default function Team() {
 
       case "Instagram":
         return <Instagram size="20" />;
+      
+      case "Github":
+        return <Github size="20" />;
     }
   };
 
@@ -101,38 +157,37 @@ export default function Team() {
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold">
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Our Dedicated{" "}
-        </span>
+        <span className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text font-extrabold">
         Crew
+        </span>
       </h2>
 
       <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        {" "}
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
         {teamList.map(
-          ({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+          ({ imageUrl, name, position, socialNetworks, content }: TeamProps) => (
             <Card
               key={name}
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
             >
               <CardHeader className="mt-8 flex justify-center items-center pb-2">
-                <img
-                  src={imageUrl}
-                  alt={`${name} ${position}`}
-                  className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-                />
-                <CardTitle className="text-center">{name}</CardTitle>
-                <CardDescription className="text-primary">
+                <Image
+                src={imageUrl}
+                alt={`${name} ${position}`}
+                className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover">
+                </Image>
+                <CardTitle className="text-center mb-3">{name}</CardTitle>
+                <CardDescription className="text-primary mt-">
                   {position}
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>{content}</p>
               </CardContent>
 
               <CardFooter>

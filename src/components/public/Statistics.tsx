@@ -6,7 +6,7 @@ export default function Statistics() {
   
     const stats: statsProps[] = [
       {
-        quantity: "2.7K+",
+        quantity: "50+",
         description: "Users",
       },
       {

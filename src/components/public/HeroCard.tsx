@@ -4,7 +4,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button, buttonVariants } from "../ui/button";
 import { Check, Lightbulb, Linkedin } from "lucide-react";
 import { Badge } from "../ui/badge";
-
+import hiralShah from "../public/img/landing-page-people/hiral-shah.jpg";
+import piyushPatel from "../public/img/landing-page-people/piyush-patel.png";
+import darshilParikh from "../public/img/landing-page-people/darshil-parikh.png";
+import Image from "next/image";
 export default function HeroCard(){
     return(
         <>
@@ -13,40 +16,156 @@ export default function HeroCard(){
       <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
           <Avatar>
-            <AvatarImage
-              alt=""
-              src="https://github.com/shadcn.png"
-            />
-            <AvatarFallback>SH</AvatarFallback>
+            <Image
+            alt=""
+            src={darshilParikh}
+          >
+
+            </Image>
           </Avatar>
 
           <div className="flex flex-col">
-            <CardTitle className="text-lg">John Doe React</CardTitle>
-            <CardDescription>@john_doe</CardDescription>
+            <CardTitle className="text-lg">Darshil Parikh</CardTitle>
+            <CardDescription>Web Designer</CardDescription>
           </div>
         </CardHeader>
 
-        <CardContent>This landig page is awesome!</CardContent>
+        <CardContent>Platform much needed.</CardContent>
+        <CardFooter>
+          <div>
+            <a
+              href="https://github.com/leoMirandaa"
+              target="_blank"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              <span className="sr-only">Github icon</span>
+              <GitHubLogoIcon className="w-5 h-5" />
+            </a>
+            <a
+              href="https://twitter.com/leo_mirand4"
+              target="_blank"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              <span className="sr-only">X icon</span>
+              <svg
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-foreground w-5 h-5"
+              >
+                <title>X</title>
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              <span className="sr-only">Linkedin icon</span>
+              <Linkedin size="20" />
+            </a>
+          </div>
+        </CardFooter>
       </Card>
 
       {/* Team */}
-      <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+      <Card className="absolute -right-[28px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="mt-8 flex justify-center items-center pb-2">
-          <img
-            src="https://i.pravatar.cc/150?img=58"
+          <Image
+            src={hiralShah}
             alt="user avatar"
-            className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-          />
-          <CardTitle className="text-center">Leo Miranda</CardTitle>
+            className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover">
+          </Image>
+          
+          <CardTitle className="text-center">Hiral Shah</CardTitle>
           <CardDescription className="font-normal text-primary">
-            Frontend Developer
+            IOT Developer
           </CardDescription>
         </CardHeader>
 
         <CardContent className="text-center pb-2">
           <p>
-            I really enjoy transforming ideas into functional software that
-            exceeds expectations
+          Feathery is a good platform for expressing my achivements, get other's opinions thru comments, find people I can work with and solve my problems. I love the idea behind the paltform!
+          </p>
+        </CardContent>
+
+        <CardFooter>
+          <div>
+            <a
+              href="https://github.com/RHS-HIRAL"
+              target="_blank"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              <span className="sr-only">Github icon</span>
+              <GitHubLogoIcon className="w-5 h-5" />
+            </a>
+            <a
+              href="https://twitter.com/hiralshah0308"
+              target="_blank"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              <span className="sr-only">X icon</span>
+              <svg
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-foreground w-5 h-5"
+              >
+                <title>X</title>
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/rhs-hiral"
+              target="_blank"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              <span className="sr-only">Linkedin icon</span>
+              <Linkedin size="20" />
+            </a>
+          </div>
+        </CardFooter>
+      </Card>
+
+      {/* Pricing */}
+      <Card className="absolute top-[250px] left-[0px] w-72  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+        <CardHeader className="mt-8 flex justify-center items-center pb-2">
+          <Image
+          src={piyushPatel}
+          alt="user avatar"
+          className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover"
+          >
+
+          </Image>
+          <CardTitle className="text-center">Piyush Patel</CardTitle>
+          <CardDescription className="font-normal text-primary">
+            Founder, Pintube.com
+          </CardDescription>
+          </CardHeader>
+          <CardContent className="text-center pb-2">
+          <p>
+          It's the ultimate space for transparency and collaboration in our continuous journey of growth.
           </p>
         </CardContent>
 
@@ -98,62 +217,16 @@ export default function HeroCard(){
         </CardFooter>
       </Card>
 
-      {/* Pricing */}
-      <Card className="absolute top-[150px] left-[50px] w-72  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
-        <CardHeader>
-          <CardTitle className="flex item-center justify-between">
-            Free
-            <Badge
-              variant="secondary"
-              className="text-sm text-primary"
-            >
-              Most popular
-            </Badge>
-          </CardTitle>
-          <div>
-            <span className="text-3xl font-bold">$0</span>
-            <span className="text-muted-foreground"> /month</span>
-          </div>
-
-          <CardDescription>
-            Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent>
-          <Button className="w-full">Start Free Trial</Button>
-        </CardContent>
-
-        <hr className="w-4/5 m-auto mb-4" />
-
-        <CardFooter className="flex">
-          <div className="space-y-4">
-            {["4 Team member", "4 GB Storage", "Upto 6 pages"].map(
-              (benefit: string) => (
-                <span
-                  key={benefit}
-                  className="flex"
-                >
-                  <Check className="text-green-500" />{" "}
-                  <h3 className="ml-2">{benefit}</h3>
-                </span>
-              )
-            )}
-          </div>
-        </CardFooter>
-      </Card>
-
       {/* Service */}
-      <Card className="absolute w-[350px] -right-[10px] bottom-[35px]  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+      <Card className="absolute w-[350px] -right-[30px] -bottom-[100px]  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
           <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
             <Lightbulb />
           </div>
           <div>
-            <CardTitle>Light & dark mode</CardTitle>
+            <CardTitle>Learn in public</CardTitle>
             <CardDescription className="text-md mt-2">
-              Lorem ipsum dolor sit amet consect adipisicing elit. Consectetur
-              natusm.
+            Share your learning journey openly, connect with fellow learners, and grow together in a supportive community focused on knowledge sharing and personal development.
             </CardDescription>
           </div>
         </CardHeader>

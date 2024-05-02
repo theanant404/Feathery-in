@@ -22,17 +22,17 @@ export default function Home(){
         <>
         <div className="  overflow-x-hidden">
           <Hero/>
-          <Sponsors/>
+          {/* <Sponsors/> */}
           <About/>
           
-          <Statistics/>
+          {/* <Statistics/> */}
           <HowItWorks/>
-          <Features/>
-          <Services/>
+          {/* <Features/> */}
+          {/* <Services/> */}
           <Testimonials/>
           <Team/>
-          <Pricing/>
-          <Newsletter/>
+          {/* <Pricing/> */}
+          {/* <Newsletter/> */}
           <FAQ/>
         </div>
        

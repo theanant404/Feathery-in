@@ -10,27 +10,27 @@ interface FeatureProps {
 const features: FeatureProps[] = [
   {
     icon: <MedalIcon />,
-    title: "Accesibility",
+    title: "Share",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Document your learning journey, Share your progress, challenges, and insights with others.",
   },
   {
     icon: <MapIcon />,
-    title: "Community",
+    title: "Connect",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Connect with like-minded learners, Join groups, communities.",
   },
   {
     icon: <PlaneIcon />,
-    title: "Scalability",
+    title: "Personal Branding",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Define your unique value proposition, showcase your expertise, and build a strong online presence.",
   },
   {
     icon: <GiftIcon />,
-    title: "Gamification",
+    title: "Grow",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Cultivate a mindset of continuous growth and self-improvement.",
   },
 ];
 
@@ -42,14 +42,13 @@ export const HowItWorks = () => {
     >
       <h2 className="text-3xl md:text-4xl font-bold ">
         How It{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+        <span className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
           Works{" "}
         </span>
         Step-by-Step Guide
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Strengthen your online image with our personal branding platform.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
