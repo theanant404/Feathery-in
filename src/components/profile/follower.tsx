@@ -176,7 +176,7 @@ const people = [
   
   export default function Follower() {
     return (
-      <ul role="list" className="divide-y divide-gray-500">
+      <ul role="list" className="">
         {people.map((person) => (
           <li key={person.email} className="flex justify-between p-8 gap-x-6 py-5">
             <div className="flex min-w-0 gap-x-4">

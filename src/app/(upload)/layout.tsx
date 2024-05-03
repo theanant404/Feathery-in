@@ -24,7 +24,7 @@ export default function Layout({
       <AuthProvider>
         <ThemeProvider>
           <body className="">
-            <NavBar/>
+            <Hader/>
             <div className="flex">
               <SidBar/>
               {children}

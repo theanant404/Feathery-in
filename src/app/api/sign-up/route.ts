@@ -3,12 +3,13 @@ import UserModel from "@/models/User.model";
 import bcrypt from "bcryptjs";
 import { sendVreificationEmail } from "@/helpers/sendVerificationEmail";
 
+
 export async function POST(req: Request) {
   await dbConnect();
 
   try {
-    const { fullname, email, password,username } = await req.json();
-    if(!fullname||!email||!password||!username){
+    const { name, email, password,username } = await req.json();
+    if(!name||!email||!password||!username){
       return Response.json({
         success:false,
         message:"Provide all Cradiential "
@@ -53,15 +54,16 @@ export async function POST(req: Request) {
       const expiryDate = new Date();
       expiryDate.setHours(expiryDate.getHours() + 1);
       const newUser = new UserModel({
-        fullname,
+        name,
         username,
         email,
         password: hasPassword,
         verifyCode: verifyCode,
         verifyCodeExpiry: expiryDate,
         isAcceptingMessage: true,
-        isVerified: true,
-        image: [],
+        isVerified:false,
+        image:'',
+        imgPublicId:'',
         message: [],
       });
       const saveuser = await newUser.save();
@@ -74,7 +76,7 @@ export async function POST(req: Request) {
     // send verirfication email
     // const emailResponse = await sendVreificationEmail(
     //   email,
-    //   fullname,
+    //   name,
     //   verifyCode
     // );
     // console.log(emailResponse);
