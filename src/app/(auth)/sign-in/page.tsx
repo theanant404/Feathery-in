@@ -28,18 +28,26 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {Loader2} from 'lucide-react'
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
-import { signIn } from "next-auth/react";
+
+import { Google, LogoIcon } from "@/components/Icons";
+// login
+import { useSession, signIn, signOut } from "next-auth/react";
 export default function SignIn() {
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
   const [isCheckingEmail, setIsCheckingEmail] = useState(false);
   const [isSubmiting, setIsSubmiting] = useState(false);
-  const debounced = useDebounceCallback(setEmail, 500);
+  const debounced = useDebounceCallback(setEmail, 1000);
   const router = useRouter();
-
+  const [showPassword, setShowPassword] = useState(false);
+  // redirect 
+  const session = useSession();
+  if(session.status==='authenticated'){
+    router.replace('/')
+  }
   // Zod implementation
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -56,15 +64,16 @@ export default function SignIn() {
 
         try {
           const response = await axios.get(
-            `/api/check-email-register?email=${email}`
+            `/api/check-email-login?email=${email}`
           );
           // console.log(response.data.message)
-          let message=response.data.message
+          let message = response.data.message;
           setEmailMessage(message);
         } catch (error: any) {
           const axiosError = error as AxiosError<ApiResponse>;
           setEmailMessage(
-            axiosError.response?.data.message ?? "Error checking Email Please try again"
+            axiosError.response?.data.message ??
+              "Error checking Email Please try again"
           );
         } finally {
           setIsCheckingEmail(false);
@@ -76,15 +85,29 @@ export default function SignIn() {
 
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
     setIsSubmiting(true);
-    const password=data.password;
-    const email=data.email;
+    const password = data.password;
+    const email = data.email;
     try {
-        const response = await signIn('credentials', { email: email, password: password })
-      toast({
-        title: "Success",
-        description:"Login successfull",
-      });
-      router.replace(`/`);
+      if (emailMessage === "email is Valid") {
+        const response = await signIn("credentials", {
+          email: email,
+          password: password,
+        });
+        toast({
+          title: "Success",
+          description: "Login successfull",
+        });
+        // console.log("login response", response);
+        // router.push(`/`);
+      }
+      else{
+        toast({
+          title:"Email not Register",
+          description:"Go to Sign Up First",
+          variant: "destructive",
+        })
+        setIsSubmiting(false);
+      }
     } catch (error: any) {
       console.error("Error in SIgnUp of User", error);
       const axiosError = error as AxiosError<ApiResponse>;
@@ -97,17 +120,34 @@ export default function SignIn() {
       setIsSubmiting(false);
     }
   };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
-      <span className="">the anant</span>
       <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle className="text-xl text-center">Sign Up</CardTitle>
+          <CardTitle className="text-xl text-center">Sign in</CardTitle>
+
           <CardDescription>
             Enter your information to create an account
           </CardDescription>
         </CardHeader>
+
         <CardContent>
+          <Button
+            onClick={() => signIn("google")}
+            className="w-full text-center flex justify-center items-center bg-white dark:bg-gray-900 border border-gray-700 rounded-lg shadow-md px-5 py-2.5 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            <Google />
+            <span>Continue with Google</span>
+          </Button>
+          <div className="flex w-full items-center gap-2 py-6 text-sm ">
+            <div className="h-px w-full bg-slate-200"></div>
+            OR
+            <div className="h-px w-full bg-slate-200"></div>
+          </div>
           <Form {...form}>
             <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
               <FormField
@@ -126,9 +166,19 @@ export default function SignIn() {
                         }}
                       />
                     </FormControl>
-                    {isCheckingEmail && <Loader2 className="mr-2 h-4 w-4 animate-spin"/>}
-                    <p className={`text-sm ${emailMessage==="email is Valid"?'text-green-500':'text-red-500'}`}>{emailMessage}</p>
-                    
+                    {isCheckingEmail && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    <p
+                      className={`text-sm ${
+                        emailMessage[0] === "email is Valid"
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {emailMessage}
+                    </p>
+
                     <FormMessage />
                   </FormItem>
                 )}
@@ -137,35 +187,51 @@ export default function SignIn() {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
+                  <FormControl>
+                    <div className="relative">
+                      <div
+                        className="p-1  rounded-none absolute right-10 top-1 h-4 w-4 text-muted-foreground"
+                        onClick={togglePasswordVisibility}
+                      >
+                        {showPassword ? (
+                          <Eye color="var(--fill-color)" size={30} />
+                        ) : (
+                          <EyeOff color="var(--fill-color)" size={30} />
+                        )}
+                      </div>
                       <Input
-                        type="password"
+                        className=""
+                        type={showPassword ? "text" : "password"}
                         placeholder="password"
                         {...field}
                         onChange={(e) => {
                           field.onChange(e);
                         }}
                       />
-                      
-                    </FormControl>
-                    
-                    <FormMessage />
-                  </FormItem>
+                    </div>
+                  </FormControl>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={isSubmiting}>
-               {isSubmiting?(<>
-               <Loader2 className="mr-2 h-4 w-4 animate-spin"/> Please Wait ....  
-               </>):('Crate an Account')}
+              <Button
+                type="submit"
+                className="w-full  bg-gray-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                disabled={isSubmiting}
+              >
+                {isSubmiting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
+                    Wait ....
+                  </>
+                ) : (
+                  "Crate an Account"
+                )}
               </Button>
             </form>
           </Form>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
-            <Link href="#" className="underline">
-              Sign in
+            Create an Account{" "}
+            <Link href="sign-up" className="underline">
+              Sign Up
             </Link>
           </div>
         </CardContent>

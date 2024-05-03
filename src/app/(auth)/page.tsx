@@ -12,12 +12,13 @@ import Sponsors from "@/components/public/SponSor"
 import Statistics from "@/components/public/Statistics"
 import Team from "@/components/public/Teams"
 import { Testimonials } from "@/components/public/Testimonials"
+import { useSession } from "next-auth/react"
 
 // import { useSession } from "next-auth/react"
 
 export default function Home(){
-    // const session=useSession()
-    // console.log(session)
+    const session=useSession()
+    console.log(session)
     return(
         <>
         <div className="  overflow-x-hidden">
