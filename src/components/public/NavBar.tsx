@@ -37,16 +37,16 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "/",
-    label: "Home",
-  },
-  {
-    href: "#features",
-    label: "Features",
+    href: "#howItWorks",
+    label: "How it works",
   },
   {
     href: "#testimonials",
     label: "Testimonials",
+  },
+  {
+    href: "#team",
+    label: "Team",
   },
   {
     href: "#faq",
@@ -104,6 +104,7 @@ export default function NavBar() {
                       {label}
                     </Link>
                   ))}
+                    Login
                   <Link
                     href="/sign-in"
                     className={`border ${buttonVariants({

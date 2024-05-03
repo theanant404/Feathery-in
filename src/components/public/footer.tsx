@@ -13,94 +13,71 @@ export default function Footer(){
             href="/"
             className="font-bold text-xl flex"
           >
-            <Leaf />
             Feathery
          </Link>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          {" "}
         </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Follow US</h3>
           <div>
             <Link
-              href="#"
+              href="https://www.linkedin.com/company/feathery-in"
+              target="_blank"
               className="opacity-60 hover:opacity-100"
             >
-              Github
+              Linkedin
            </Link>
           </div>
 
           <div>
             <Link
-              href="#"
+              href="https://www.instagram.com/feathery.in/"
+              target="_blank"
               className="opacity-60 hover:opacity-100"
             >
+              Instagram
+           </Link>
+          </div>
+
+          <div>
+            <Link
+              href="https://twitter.com/Feathery_in"
+              target="_blank"
+              className="opacity-60 hover:opacity-100"
+              >
               Twitter
            </Link>
           </div>
-
-          <div>
-            <Link
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Dribbble
-           </Link>
-          </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Platforms</h3>
-          <div>
-            <Link
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Web
-           </Link>
-          </div>
-
-          <div>
-            <Link
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Mobile
-           </Link>
-          </div>
-
-          <div>
-            <Link
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Desktop
-           </Link>
-          </div>
-        </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">About</h3>
           <div>
             <Link
-              href="#"
+              href="#team"
               className="opacity-60 hover:opacity-100"
             >
-              Features
+              Team
            </Link>
           </div>
 
           <div>
             <Link
-              href="#"
+              href="#howItWorks"
               className="opacity-60 hover:opacity-100"
             >
-              Pricing
+              How it works
            </Link>
           </div>
 
           <div>
             <Link
-              href="#"
+              href="#faq"
               className="opacity-60 hover:opacity-100"
             >
               FAQ
@@ -109,13 +86,13 @@ export default function Footer(){
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
+          <h3 className="font-bold text-lg">Legal</h3>
           <div>
             <Link
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Youtube
+              Privacy Policy
            </Link>
           </div>
 
@@ -124,7 +101,7 @@ export default function Footer(){
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Discord
+              Cookie Policy
            </Link>
           </div>
 
@@ -133,7 +110,7 @@ export default function Footer(){
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Twitch
+              Terms
            </Link>
           </div>
         </div>
