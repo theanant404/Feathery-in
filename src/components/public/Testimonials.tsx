@@ -10,6 +10,9 @@ import hiralShah from "../public/img/landing-page-people/hiral-shah.jpg";
 import piyushPatel from "../public/img/landing-page-people/piyush-patel.png";
 import darshilParikh from "../public/img/landing-page-people/darshil-parikh.png";
 import khetal from "../public/img/landing-page-people/khetal.png";
+import shreya from "../public/img/landing-page-people/shreya-thakkar.png";
+import priyansh from "../public/img/landing-page-people/priyansh.jpeg";
+
 import Image from "next/image";
 interface TestimonialProps {
   image: any;
@@ -45,29 +48,22 @@ const testimonials: TestimonialProps[] = [
     name: "Khetal Kankariya",
     userName: "Web Developer",
     comment:
-      "A very good platform to share knowledge and information with others and publicize my thoughts and opinions too!",
+      "A very good platform to share knowledge and information with others and publicize my thoughts and opinions too!",
   },
-  // {
-  //   image: "https://github.com/shadcn.png",
-  //   name: "John Doe React",
-  //   userName: "@john_Doe3",
-  //   comment:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-  // },
-  // {
-  //   image: "https://github.com/shadcn.png",
-  //   name: "John Doe React",
-  //   userName: "@john_Doe4",
-  //   comment:
-  //     "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud.",
-  // },
-  // {
-  //   image: "https://github.com/shadcn.png",
-  //   name: "John Doe React",
-  //   userName: "@john_Doe5",
-  //   comment:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  // },
+  {
+    image: shreya,
+    name: "Shreya Thakkar",
+    userName: "AI Enthusiast",
+    comment:
+      "Feathery.in offers a superb platform for sharing insights, facts, and tech knowledge. As an AI enthusiast, I've shared valuable insights and received diverse feedback. It's a vibrant space for knowledge exchange and interaction. Feathery.in facilitates connections among like-minded individuals, fostering collaboration and meaningful engagement.",
+  },
+  {
+    image: priyansh,
+    name: "Priyansh Uttamchandani",
+    userName: "Engineer",
+    comment:
+      "Feathery.in offers a superb platform for sharing insights, facts, and tech knowledge. As an AI enthusiast, I've shared valuable insights and received diverse feedback. It's a vibrant space for knowledge exchange and interaction. Feathery.in facilitates connections among like-minded individuals, fostering collaboration and meaningful engagement.",
+  },
 ];
 
 export const Testimonials = () => {
@@ -102,8 +98,6 @@ export const Testimonials = () => {
                    alt=""
                    src={image}>
                   </Image>
-                 
-                  <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
 
                 <div className="flex flex-col">

@@ -36,14 +36,10 @@ const teamList: TeamProps[] = [
     position: "Founder",
     content:"Building Feathery.in",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/aryan-thakor/" },
       {
         name: "Github",
         url: "https://www.github.com/aryan1982",
-      },
-      {
-        name: "Feathery",
-        url: "https://www.instagram.com/",
       },
     ],
   },
@@ -53,48 +49,36 @@ const teamList: TeamProps[] = [
     position: "Backend Developer",
     content:"Building Feathery.in",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/the-anant" },
       {
         name: "Github",
-        url: "https://www.github.com/aryan1982",
-      },
-      {
-        name: "Feathery",
-        url: "https://www.instagram.com/",
+        url: "https://github.com/the-anant",
       },
     ],
   },
   {
     imageUrl: harsh,
     name: "Harsh Shukla",
-    position: "",
-    content:"Building Feathery.in",
+    position: "Contributor",
+    content:"Lets build future together!",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/devloperhs/" },
       {
         name: "Github",
-        url: "https://www.github.com/aryan1982",
-      },
-      {
-        name: "Feathery",
-        url: "https://www.instagram.com/",
+        url: "https://github.com/devloperhs14",
       },
     ],
   },
   {
     imageUrl: jenish,
     name: "Jenish Patel",
-    position: "Graphics Designer",
+    position: "UI / UX Designer",
     content:"Building Feathery.in",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/jenishpatel05/" },
       {
         name: "Github",
-        url: "https://www.github.com/aryan1982",
-      },
-      {
-        name: "Feathery",
-        url: "https://www.instagram.com/",
+        url: "https://github.com/Jenishxp",
       },
     ],
   },
@@ -104,14 +88,10 @@ const teamList: TeamProps[] = [
     position: "Social Media Lead and Designer",
     content:"Building Feathery.in",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/vipra-dave/" },
       {
         name: "Github",
-        url: "https://www.github.com/aryan1982",
-      },
-      {
-        name: "Feathery",
-        url: "https://www.instagram.com/",
+        url: "https://github.com/vipradave",
       },
     ],
   },
@@ -119,16 +99,12 @@ const teamList: TeamProps[] = [
     imageUrl: rutvi,
     name: "Rutvi Shah",
     position: "Content Writer and Designer",
-    content:"Building Feathery.in",
+    content:"Keep creating!",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/rutvishah22/" },
       {
         name: "Github",
-        url: "https://www.github.com/aryan1982",
-      },
-      {
-        name: "Feathery",
-        url: "https://www.instagram.com/",
+        url: "https://github.com/rutvishah22",
       },
     ],
   },
@@ -139,12 +115,6 @@ export default function Team() {
     switch (iconName) {
       case "Linkedin":
         return <Linkedin size="20" />;
-
-      case "Facebook":
-        return <Facebook size="20" />;
-
-      case "Instagram":
-        return <Instagram size="20" />;
       
       case "Github":
         return <Github size="20" />;
