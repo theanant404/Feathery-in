@@ -1,0 +1,18 @@
+<!-- general routes  -->
+http://localhost:3000     --- this is public home or landing page any one can visit this page 
+http://localhost:3000/the_annat   ---- at this url if not login  user visit this url go to (the_anant) profile page and see some limited content about (the_anant), if Login then see everything
+http://localhost:3000/post  --- only login user can visit on this or see all user post avlevel on the website 
+http://localhost:3000/video  --- only  login user can visit on this or see all user vdeos 
+http://localhost:3000/artical  ---- only login user can visit on this or see all user articals
+http://localhost:3000/.....
+<!-- get all users -->
+http://localhost:3000/userslist  ----- get all user list login on our website [only login user can visit this url]
+<!-- message -->
+http://localhost:3000/message  ---- display all users for message connected for chat or ready accept you messae invitation
+http://localhost:3000/message/chatroomId ---- display all message connected with particular chatroomid or you can send messages
+
+<!-- login user account related -->
+http://localhost:3000/account/profil-edit  --- login user can edit profile 
+http://localhost:3000/account/add-post  --- login user can add post 
+http://localhost:3000/account/add-arical  --- login user can add artical 
+http://localhost:3000/account/.....

@@ -30,7 +30,7 @@ const ImageSchema:Schema<Image>=new Schema({
     }
 })
 export interface User{
-    fullname:string,
+    name:string,
     username:string;
     email:string;
     password:string;
@@ -39,7 +39,8 @@ export interface User{
     verifyCodeExpiry:Date;
     isAcceptingMessage:boolean;
     isVerified:boolean,
-    image:Image[],
+    image:string,
+    imgPublicId:string,
     message:Message[],
     followers:{},
     following:{},
@@ -51,7 +52,7 @@ const UserSchema:Schema<User>=new Schema({
         required:true,
         unique:true
     },
-    fullname:{
+    name:{
         type:String,
         required:true,
     },
@@ -92,8 +93,14 @@ const UserSchema:Schema<User>=new Schema({
         type: Schema.Types.ObjectId,
         ref: 'UserModel'
       }],
+    
+    image:{
+        type:String,
+    },
+    imgPublicId:{
+        type:String,
+    },
     message:[MessageSchema],
-    image:[ImageSchema],
 })
 
 const UserModel=(mongoose.models.User as mongoose.Model<User>)||(mongoose.model<User>("User",UserSchema))

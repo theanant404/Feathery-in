@@ -24,15 +24,31 @@ export async function GET(req:Request){
             },{status:400})
         }
         const {username}=result.data
-        const existingVerifiedUser=await UserModel.findOne({username,isVerified:true})
-        if(existingVerifiedUser){
+        // console.log(username)
+        const user=await UserModel.findOne({username})
+        
+        if(!user){
             return Response.json({
                 success:false,
-                message:'Username is alread taken'
+                message:'User Not found'
             },{status:201})
         }
+        const userDetails = {
+            _id: user._id,
+            username: user.username,
+            name: user.name,
+            email: user.email,
+            followers: user.followers,
+            following: user.following,
+            image: user.image,
+            imgPublicId: user.imgPublicId,
+            message: user.message,
+            __v: user.__v
+          };
+        // console.log(userDetails)
         return Response.json({
             success:true,
+            userDetails,
             message:'Username is avlable'
         },{status:201})
     } catch (error:any) {

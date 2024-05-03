@@ -31,6 +31,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useSession } from "next-auth/react";
 
 const FormSchema = z.object({
   pin: z.string().min(6, {
@@ -41,7 +42,10 @@ const FormSchema = z.object({
 export default function VerifyAccount() {
   const router = useRouter();
   const params = useParams<{ username: string }>();
-
+  const session=useSession()
+  if(session.status==='authenticated'&&session.data.user.isVerified){
+    router.replace('/sign-in')
+  }
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),
     defaultValues: {
@@ -55,11 +59,12 @@ export default function VerifyAccount() {
         username: params.username,
         code: data.code,
       });
+      console.log(response)
       toast({
         title: "success:",
         description: response.data.message,
       });
-      router.replace("sign-in");
+      router.replace("/sign-in");
     } catch (error: any) {
       console.error("Error in Verifying of User", error);
       const axiosError = error as AxiosError<ApiResponse>;
@@ -70,14 +75,6 @@ export default function VerifyAccount() {
         variant: "destructive",
       });
     }
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
   }
 
   return (

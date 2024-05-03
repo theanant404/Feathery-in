@@ -29,29 +29,42 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {Loader2} from 'lucide-react'
-export default function SignIn() {
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Google } from "@/components/Icons";
+import { signIn, useSession } from "next-auth/react";
+export default function SignUp() {
   const { toast } = useToast();
   const [username, setUsername] = useState("");
   const [usernameMessage, setUsernameMessage] = useState("");
   const [isCheckingUsername, setIsCheckingUsername] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [isCheckingEmail, setIsCheckingEmail] = useState(false);
   const [isSubmiting, setIsSubmiting] = useState(false);
-  const debounced = useDebounceCallback(setUsername, 500);
+  const debouncedemial = useDebounceCallback(setEmail, 1500);
+  const debounced = useDebounceCallback(setUsername, 1500);
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  // redirect
+  const session = useSession();
+  if (session.status === "authenticated") {
+    router.replace("/");
+  }
 
   // Zod implementation
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      fullname:"",
+      name: "",
       username: "",
       email: "",
       password: "",
     },
   });
+  // user name check
   useEffect(() => {
     const checkUsernameUnique = async () => {
-      if (username) {
+      if (username.length > 1) {
         setIsCheckingUsername(true);
         setUsernameMessage("");
 
@@ -60,7 +73,7 @@ export default function SignIn() {
             `/api/check-username-unique?username=${username}`
           );
           // console.log(response.data.message)
-          let message=response.data.message
+          let message = response.data.message;
           setUsernameMessage(message);
         } catch (error: any) {
           const axiosError = error as AxiosError<ApiResponse>;
@@ -74,16 +87,52 @@ export default function SignIn() {
     };
     checkUsernameUnique();
   }, [username]);
+  // email check
+  useEffect(() => {
+    const checkemailUnique = async () => {
+      if (email) {
+        setIsCheckingEmail(true);
+        setEmailMessage("");
 
+        try {
+          const response = await axios.get(
+            `/api/check-email-register?email=${email}`
+          );
+          // console.log(response.data.message)
+          let message = response.data.message;
+          setEmailMessage(message);
+        } catch (error: any) {
+          const axiosError = error as AxiosError<ApiResponse>;
+          setEmailMessage(
+            axiosError.response?.data.message ??
+              "Error checking Email Please try again"
+          );
+        } finally {
+          setIsCheckingEmail(false);
+        }
+      }
+    };
+    
+    checkemailUnique();
+  }, [email]);
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setIsSubmiting(true);
     try {
-      const response = await axios.post<ApiResponse>("/api/sign-up", data);
-      toast({
-        title: "Success",
-        description: response.data.message,
-      });
-      router.replace(`/verify/${username}`);
+      if (usernameMessage === "Username is avlable" && emailMessage==="This is Unique Email") {
+        const response = await axios.post<ApiResponse>("/api/sign-up", data);
+        toast({
+          title: "Success",
+          description: response.data.message,
+        });
+        router.replace(`/verify/${username}`);
+      } else {
+        toast({
+          title: "Signup failed",
+          description: "Username or email is already taken change the user name or email",
+          variant: "destructive",
+        });
+        setIsSubmiting(false);
+      }
     } catch (error: any) {
       console.error("Error in SIgnUp of User", error);
       const axiosError = error as AxiosError<ApiResponse>;
@@ -96,6 +145,11 @@ export default function SignIn() {
       setIsSubmiting(false);
     }
   };
+  // show or hide password
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <span className="">the anant</span>
@@ -107,11 +161,23 @@ export default function SignIn() {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          <Button
+            onClick={() => signIn("google")}
+            className="w-full text-center flex justify-center items-center bg-white dark:bg-gray-900 border border-gray-700 rounded-lg shadow-md px-5 py-2.5 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            <Google />
+            <span>Continue with Google</span>
+          </Button>
+          <div className="flex w-full items-center gap-2 py-6 text-sm ">
+            <div className="h-px w-full bg-slate-200"></div>
+            OR
+            <div className="h-px w-full bg-slate-200"></div>
+          </div>
           <Form {...form}>
             <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
-            <FormField
+              <FormField
                 control={form.control}
-                name="fullname"
+                name="name"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Full name</FormLabel>
@@ -144,9 +210,19 @@ export default function SignIn() {
                         }}
                       />
                     </FormControl>
-                    {isCheckingUsername && <Loader2 className="mr-2 h-4 w-4 animate-spin"/>}
-                    <p className={`text-sm ${usernameMessage==="Username is avlable"?'text-green-500':'text-red-500'}`}>{usernameMessage}</p>
-                    
+                    {isCheckingUsername && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    <p
+                      className={`text-sm ${
+                        usernameMessage === "Username is avlable"
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {usernameMessage}
+                    </p>
+
                     <FormMessage />
                   </FormItem>
                 )}
@@ -163,9 +239,22 @@ export default function SignIn() {
                         {...field}
                         onChange={(e) => {
                           field.onChange(e);
+                          debouncedemial(e.target.value)
                         }}
                       />
                     </FormControl>
+                    {isCheckingEmail && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    <p
+                      className={`text-sm ${
+                        emailMessage === "This is Unique Email"
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {emailMessage}
+                    </p>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -174,34 +263,50 @@ export default function SignIn() {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
+                  <FormControl>
+                    <div className="relative">
+                      <div
+                        className="p-1  rounded-none absolute right-10 top-1 h-4 w-4 text-muted-foreground"
+                        onClick={togglePasswordVisibility}
+                      >
+                        {showPassword ? (
+                          <Eye color="var(--fill-color)" size={30} />
+                        ) : (
+                          <EyeOff color="var(--fill-color)" size={30} />
+                        )}
+                      </div>
                       <Input
-                        type="password"
+                        className=""
+                        type={showPassword ? "text" : "password"}
                         placeholder="password"
                         {...field}
                         onChange={(e) => {
                           field.onChange(e);
                         }}
                       />
-                      
-                    </FormControl>
-                    
-                    <FormMessage />
-                  </FormItem>
+                    </div>
+                  </FormControl>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={isSubmiting}>
-               {isSubmiting?(<>
-               <Loader2 className="mr-2 h-4 w-4 animate-spin"/> Please Wait ....  
-               </>):('Crate an Account')}
+              <Button
+                type="submit"
+                className="w-full  bg-gray-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                disabled={isSubmiting}
+              >
+                {isSubmiting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
+                    Wait ....
+                  </>
+                ) : (
+                  "Crate an Account"
+                )}
               </Button>
             </form>
           </Form>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
-            <Link href="#" className="underline">
+            <Link href="sign-in" className="underline">
               Sign in
             </Link>
           </div>

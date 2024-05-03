@@ -28,12 +28,12 @@ export async function GET(req:Request){
         if(existingVerifiedUser){
             return Response.json({
                 success:false,
-                message:'Email is Already Register Go to login'
+                message:'email is Valid'
             },{status:200})
         }
         return Response.json({
             success:true,
-            message:'This is Unique Email'
+            message:'email is not register go to sign-up page first'
         },{status:201})
     } catch (error:any) {
         console.error("Error during chacking email ",error)
