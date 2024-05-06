@@ -55,6 +55,7 @@ const routeList: RouteProps[] = [
 ];
 export default function NavBar() {
   const session = useSession();
+  // console.log(session)
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <header className="sticky overflow-hidden border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">

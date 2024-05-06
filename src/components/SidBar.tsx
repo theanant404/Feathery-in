@@ -23,7 +23,7 @@ import {
   import Link from "next/link";
   import { ScrollArea } from "./ui/scroll-area";
   import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
-  import NavBar from "./NavBar";
+  import NavBar from "./MenuBar";
 import Upload from "./Upload";
   
   export default function SidBar() {

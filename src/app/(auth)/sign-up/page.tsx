@@ -152,7 +152,7 @@ export default function SignUp() {
 
   return (
     <>
-      <span className="">the anant</span>
+     
       <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle className="text-xl text-center">Sign Up</CardTitle>
@@ -266,7 +266,7 @@ export default function SignUp() {
                   <FormControl>
                     <div className="relative">
                       <div
-                        className="p-1  rounded-none absolute right-10 top-1 h-4 w-4 text-muted-foreground"
+                        className="p-1  rounded-none absolute right-10 top-0 h-4 w-4 text-muted-foreground"
                         onClick={togglePasswordVisibility}
                       >
                         {showPassword ? (

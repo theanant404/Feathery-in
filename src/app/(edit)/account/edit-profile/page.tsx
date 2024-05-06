@@ -1,10 +1,10 @@
 "use client"
 import { Separator } from "@/components/ui/separator"
-import { ProfileForm } from "@/components/edit-profile/profile-form"
+import  ProfileForm  from "@/components/profile/profile-form"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 
-export default function SettingsProfilePage() {
+export default function Profiledit() {
   const router=useRouter()
   const session=useSession()
   if(session.status==='unauthenticated'){
@@ -13,7 +13,8 @@ export default function SettingsProfilePage() {
   console.log(session)
   if(session.status==='unauthenticated')return null
   return (
-    <div className="space-y-6 p-10">
+    <>
+    <div className="space-y-6 p-10 ">
       <div>
         <h3 className="text-lg font-medium">Profile</h3>
         <p className="text-sm text-muted-foreground">
@@ -21,7 +22,9 @@ export default function SettingsProfilePage() {
         </p>
       </div>
       <Separator />
-      <ProfileForm />
+      <ProfileForm/>
     </div>
+    
+    </>
   )
 }

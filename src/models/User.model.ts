@@ -50,7 +50,8 @@ const UserSchema:Schema<User>=new Schema({
     username:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        index:true
     },
     name:{
         type:String,
@@ -60,6 +61,7 @@ const UserSchema:Schema<User>=new Schema({
         type:String,
         required:true,
         unique:true,
+        index:true,
         match:[/.+\@.+\..+/,'Please Provide a valid email'],
     },
     password:{

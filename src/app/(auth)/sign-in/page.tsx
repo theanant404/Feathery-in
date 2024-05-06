@@ -171,9 +171,9 @@ export default function SignIn() {
                     )}
                     <p
                       className={`text-sm ${
-                        emailMessage[0] === "email is Valid"
-                          ? "text-green-500"
-                          : "text-red-500"
+                        emailMessage=== 'email is Valid'
+                        ? "text-green-500"
+                        : "text-red-500"
                       }`}
                     >
                       {emailMessage}
